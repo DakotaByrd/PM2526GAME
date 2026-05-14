@@ -1,0 +1,5 @@
+{
+  "name": "Potion of Haste",
+  "sprite": "./resources/jsons/items/haste.json",
+  "cost": 10
+}

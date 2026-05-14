@@ -1,0 +1,5 @@
+{
+  "name": "Potion of Gigantism",
+  "sprite": "./resources/jsons/items/gigantism.json",
+  "cost": 10
+}

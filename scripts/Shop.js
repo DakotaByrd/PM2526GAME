@@ -29,7 +29,7 @@ const shop = {
 
                 if (from_item_list[i].amount_in_stock > 0 /* && amount of cash*/) {
                     from_item_list[i].amount_in_stock -= 1;
-
+                    stats.money.value = value - selected_item.cost
                     inventory.add_item(to_item_list, { name: from_item_list[i].name, like_amount: from_item_list[i].like_amount, sprite: from_item_list[i].sprite})
                     break
                 }
@@ -51,3 +51,5 @@ shop.updateMoney()
 let item_in_stock = shop.randomShopList()
 
 shop.display_items(item_in_stock);
+
+stats.money.value = stats.money.value - 50
