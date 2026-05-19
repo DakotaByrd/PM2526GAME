@@ -10,7 +10,7 @@ SceneManager.add_scene(new Scene("Main Menu", () => {
     // Add event listeners for main menu buttons
     const start_button = document.getElementById("start_button");
     start_button.addEventListener("click", () => {
-        SceneManager.change_scene(SceneManager.get_scene("Yahu Intro"));
+        SceneManager.change_scene(SceneManager.get_scene("Potion Selling"));
     });
 
     // quit button 
@@ -19,17 +19,9 @@ SceneManager.add_scene(new Scene("Main Menu", () => {
         window.close();
     });
 },
-() => {
+async () => {
     const game_title_and_buttons = document.getElementById("game-title-and-buttons");
     game_title_and_buttons.style.transform = "translate(0, 100vh)";
-}));
-
-
-SceneManager.add_scene(new Scene("Yahu Intro", async () => {
-    const benjamin_netanyahu = character_container.get_character("Benjamin Netanyahu");
-    const yahu_dialogue_box = dialogue_manager.get_character("benjamin_netanyahu");
-    const yahu_intro_dialogue = dialogue_manager.get_dialogue("yahu_intro_dialogue");
-    const yahu_moving_character = benjamin_netanyahu.moving_character;
 
     // everything in here runs behind the fade
     // acts as a loading screen
@@ -45,6 +37,17 @@ SceneManager.add_scene(new Scene("Yahu Intro", async () => {
         const light_rays = document.querySelector('.light-rays');
         light_rays.classList.add('active')
     })
+}));
+
+
+SceneManager.add_scene(new Scene("Yahu Intro", async () => {
+    const benjamin_netanyahu = character_container.get_character("benjamin_netanyahu");
+    const yahu_dialogue_box = dialogue_manager.get_character("benjamin_netanyahu");
+    const yahu_intro_dialogue = dialogue_manager.get_dialogue("yahu_intro_dialogue");
+    const yahu_moving_character = benjamin_netanyahu.moving_character;
+
+    // align with main menu fade
+    await SceneTools.transition_fade(1000, 500);
 
     // set up the moving character and dialogue box for the intro scene
     yahu_moving_character.set_position('-100%', 'calc(40vh - 50%)');
@@ -56,7 +59,7 @@ SceneManager.add_scene(new Scene("Yahu Intro", async () => {
     await yahu_dialogue_box.conversation(yahu_intro_dialogue);
     await yahu_moving_character.move_to('100vw', 'calc(40vh - 50%)', 2000);
     yahu_moving_character.hide();
-    SceneManager.change_scene(SceneManager.get_scene('Game Over'))
+    SceneManager.change_scene(SceneManager.get_scene('Potion Selling'))
 }, () => {
     const light_rays = document.querySelector('.light-rays');
     light_rays.classList.remove('active')
@@ -90,4 +93,26 @@ SceneManager.add_scene(new Scene("Game Over", async () => {
         document.body.style.backgroundColor = '#000'
         game_over_screen.classList.add('active')
     })
+}))
+
+
+SceneManager.add_scene(new Scene("Potion Selling", async () => {
+    await SceneTools.transition_fade(1000, 500, () => {
+        document.body.style.backgroundImage = "url('./resources/images/shop_bg.png')";
+    })
+
+    SceneManager.change_scene(SceneManager.get_scene("Customer Interaction"));
+}))
+
+
+SceneManager.add_scene(new Scene("Customer Interaction", async () => {
+    const [character, character_name] = character_container.get_random_character_with_name();
+    const dialogue_box = dialogue_manager.get_character(character.name);
+
+    const random_dialogue_num = Math.floor(Math.random() * 3) + 1; // assuming there are 3 dialogues for each character
+    const dialogue_name = character_name + random_dialogue_num
+    console.log(character)
+    console.log(dialogue_name)
+    const dialogue = dialogue_manager.get_dialogue(dialogue_name);
+    console.log(dialogue)
 }))

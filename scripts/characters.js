@@ -2,19 +2,9 @@ import MovingCharacter from "./moving_character.js";
 
 // every added character needs to be added to character_files below
 const character_files = [
-    "bart_simpson.json",
     "benjamin_netanyahu.json",
-    "cardinal.json",
-    "forwolk_q_splont.json",
-    "god.json",
-    "goffer.json",
-    "jennifer_marie_whitmer.json",
-    "john_b_politics.json",
-    "kronk.json",
-    "rue_t_whirl.json",
-    "shirley_z_morgan.json",
-    "stephen_m_spectre.json",
-    "sugoi_kawaii_johnson.json"
+    "bart_simpson.json",
+    "forwolk_q_splont.json"
 ]
 
 // character contianer class to store all character jsons and provide functions to access them
@@ -23,8 +13,8 @@ class CharacterContainer {
         this._characters = {};
     }
 
-    add_character(character_json) {
-        this._characters[character_json.name] = character_json;
+    add_character(name, character_json) {
+        this._characters[name] = character_json;
     }
 
     get_character(name) {
@@ -37,6 +27,19 @@ class CharacterContainer {
 
     get_all_character_names() {
         return Object.keys(this._characters);
+    }
+
+    get_random_character() {
+        const character_names = Object.keys(this._characters);
+        const random_index = Math.floor(Math.random() * character_names.length);
+        return this._characters[character_names[random_index]];
+    }
+
+    get_random_character_with_name(exclude_netanyahu = true) {
+        const character_names = exclude_netanyahu ? Object.keys(this._characters).slice(1) : Object.keys(this._characters);
+        console.log(character_names)
+        const random_index = Math.floor(Math.random() * character_names.length);
+        return [this._characters[character_names[random_index]], character_names[random_index]];
     }
 
     async load_characters(file_list = character_files) {
@@ -65,7 +68,7 @@ class CharacterContainer {
             
             data.moving_character = new MovingCharacter(data.name, data.image, 0, 0);
 
-            this.add_character(data);
+            this.add_character(file.split(".")[0], data);
         }
     }
 }

@@ -9,12 +9,13 @@ export default class SceneTools {
             fade_div.style.height = "100%";
             fade_div.style.backgroundColor = "black";
             fade_div.style.opacity = "0";
-            fade_div.style.zIndex = "200"
+            fade_div.style.zIndex = "500"
             fade_div.style.transition = `opacity ${fade_duration}ms`;
             document.body.appendChild(fade_div);
 
             // Start the fade in
             requestAnimationFrame(() => {
+                fade_div.offsetHeight; // forces reflow so the animation works
                 fade_div.style.opacity = "1";
             });
 
@@ -25,6 +26,7 @@ export default class SceneTools {
 
             // After the fade in and wait duration, fade out and resolve
             setTimeout(() => {
+                fade_div.offsetHeight; // forces reflow so the animation works
                 fade_div.style.opacity = "0";
                 fade_div.addEventListener("transitionend", () => {
                     document.body.removeChild(fade_div);
