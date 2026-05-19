@@ -7,7 +7,7 @@ export let inventory = {
         this.potions.push(item)
     },
 
-    have_item(item_list, item_name){
+    have_item(item_name){
     const names = item_list.map((item)=> item.name)
     return names.includes(item_name)
     },
