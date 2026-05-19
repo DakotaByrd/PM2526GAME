@@ -51,8 +51,20 @@ class CharacterContainer {
             }
         
             const data = await response.json();
+            
+            Object.defineProperty(data, "love", {
+                set love(value) {
+                    if (typeof value === "number") {
+                        this._love = value;
 
-            data.love = 0
+                        document.dispatchEvent(new CustomEvent(`${this.name}_love`, {
+                            detail: { value: this._love },
+                            bubbles: true
+                        }));
+                    }
+                },
+                writable: true
+            });
             
             data.moving_character = new MovingCharacter(data.name, data.image, 0, 0);
 

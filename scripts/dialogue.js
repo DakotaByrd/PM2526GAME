@@ -281,7 +281,6 @@ class Dialogue {
                         keys.forEach(character => {
                             // updates character love based on the character_love_impact object in the dialogue json for that option
                             character_container.get_character(character).love = character_container.get_character(character).love + values[keys.indexOf(character)];
-                            console.log(character + " love: " + character_container.get_character(character).love);
                         });
                     }
                 } 
@@ -303,7 +302,6 @@ class Dialogue {
                         keys.forEach(stat => {
                             // updates stats based on the stats_impact object in the dialogue json for that option
                             stats[stat].value = stats[stat].value + values[keys.indexOf(stat)];
-                            console.log(stats[stat].value);
                         });
                     }
 
@@ -315,7 +313,6 @@ class Dialogue {
                         keys.forEach(character => {
                             // updates character love based on the character_love_impact object in the dialogue json for that option
                             character_container.get_character(character).love = character_container.get_character(character).love + values[keys.indexOf(character)];
-                            console.log(character + " love: " + character_container.get_character(character).love);
                         });
                     }
                 }
