@@ -61,8 +61,6 @@ class CharacterContainer {
                     }
                 }
             });
-
-            data.love = 0
             
             data.moving_character = new MovingCharacter(data.name, data.image, 0, 0);
 
