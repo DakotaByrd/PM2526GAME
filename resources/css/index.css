@@ -152,10 +152,16 @@ p {
   transition: transform 0.2s ease;
 }
 
+.slot img {
+  image-rendering: pixelated;
+  width: 80%;
+}
+
 .slot:hover {
   transform: scale(1.05);
   border-color: #f3ab5d;
 }
+
 
 
 #first_section button:hover {
@@ -182,7 +188,6 @@ p {
   color: #f6e1b5;
   background-color: #904a00;
 }
-
 
 /**Slot_machine.css**/
 

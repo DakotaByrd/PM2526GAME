@@ -235,6 +235,7 @@ header h1 {
 #lotto1 {}
 
 #slot_machine {
+    display: none;
     flex-wrap: wrap;
     width: 100vw;
     height: 100vh;
@@ -623,7 +624,7 @@ header h1 {
 
 /*Shop Sytem*/
 #shop_container {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     font-family: "IM Fell English SC", Georgia, serif;
     background-color: #f6e1b5;

@@ -1,5 +1,5 @@
 import { stats } from "./stats.js";  
-
+import { shop } from "./shop.js"
 /*
     HOW TO USE: import this in main.js and nowhere else.
     Place all event listeners in this file and import their respective things that they will trigger.
@@ -24,7 +24,7 @@ document.addEventListener("money", (event) => {
     if (event.detail.value <= 0) {
         console.log("bankrupt ending");
     }
-    
+    shop.updateMoney()
 });
 
 document.addEventListener("schizophrenia", (event) => {

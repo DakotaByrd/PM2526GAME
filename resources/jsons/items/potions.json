@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Potion of Antigravity",
+        "sprite": "./sprites/potions/antigravity.png",
+        "cost": 10
+    },
+    {
+        "name": "Potion of Combustion",
+        "sprite": "./sprites/potions/combustion.png",
+        "cost": 10
+    },
+    {
+        "name": "Potion of Gigantism",
+        "sprite": "./sprites/potions/gigantism.png",
+        "cost": 10
+    },
+    {
+        "name": "Potion of Haste",
+        "sprite": "./sprites/potions/haste.png",
+        "cost": 10
+    },
+    {
+        "name": "Potion of Leaping",
+        "sprite": "./sprites/potions/leaping.png",
+        "cost": 10
+    },
+    {
+        "name": "Potion of Teleportation",
+        "sprite": "./sprites/potions/teleportation.png",
+        "cost": 10
+    }
+]
